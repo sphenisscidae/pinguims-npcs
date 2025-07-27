@@ -17,19 +17,19 @@
 	"entrypoints": {
 		"main": [
 			{
-				"value": "com.pinguimarmado.PinguimsNPCs",
+				"value": "com.pinguimarmado.pinguimsnpcs.PinguimsNPCs",
 				"adapter": "kotlin"
 			}
 		],
 		"client": [
 			{
-				"value": "com.pinguimarmado.PinguimsNPCsClient",
+				"value": "com.pinguimarmado.pinguimsnpcs.PinguimsNPCsClient",
 				"adapter": "kotlin"
 			}
 		],
 		"fabric-datagen": [
 			{
-				"value": "com.pinguimarmado.PinguimsNPCsDataGenerator",
+				"value": "com.pinguimarmado.pinguimsnpcs.PinguimsNPCsDataGenerator",
 				"adapter": "kotlin"
 			}
 		]
