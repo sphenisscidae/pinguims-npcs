@@ -8,6 +8,7 @@ import net.minecraft.entity.data.TrackedDataHandlerRegistry
 import net.minecraft.entity.mob.PathAwareEntity
 import net.minecraft.nbt.NbtCompound
 import net.minecraft.world.World
+import net.minecraft.text.Text
 
 class CustomEntityNPC(entityType: EntityType<out PathAwareEntity>, world: World) : PathAwareEntity(entityType, world) {
 
@@ -22,12 +23,16 @@ class CustomEntityNPC(entityType: EntityType<out PathAwareEntity>, world: World)
 
     override fun writeCustomDataToNbt(nbt: NbtCompound) {
         super.writeCustomDataToNbt(nbt)
-        nbt.putString("SkinUrl", skinUrl)
+        nbt.putString("SkinUrl", this.dataTracker.get(SKIN_URL))
+        this.customName?.let { nbt.putString("CustomName", Text.Serializer.toJson(it)) }
     }
 
     override fun readCustomDataFromNbt(nbt: NbtCompound) {
         super.readCustomDataFromNbt(nbt)
-        skinUrl = nbt.getString("SkinUrl")
+        this.dataTracker.set(SKIN_URL, nbt.getString("SkinUrl"))
+        if (nbt.contains("CustomName")) {
+            this.customName = Text.Serializer.fromJson(nbt.getString("CustomName"))
+        }
     }
 
     override fun initGoals() {

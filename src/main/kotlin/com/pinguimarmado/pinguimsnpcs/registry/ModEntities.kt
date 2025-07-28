@@ -12,16 +12,16 @@ import net.fabricmc.fabric.api.`object`.builder.v1.entity.FabricDefaultAttribute
 import net.minecraft.entity.attribute.EntityAttributes
 
 object ModEntities {
-    val CUSTOM_NPC: EntityType<CustomEntityNPC> = Registry.register(
+    val NPC: EntityType<CustomEntityNPC> = Registry.register(
         Registries.ENTITY_TYPE,
-        Identifier("pinguimsnpcs", "custom_npc"),
+        Identifier("pinguimsnpcs", "npc"),
         FabricEntityTypeBuilder.create(SpawnGroup.MISC, ::CustomEntityNPC)
             .dimensions(EntityDimensions.fixed(0.6f, 1.8f))
             .build()
     )
     fun registerAttributes() {
         FabricDefaultAttributeRegistry.register(
-            CUSTOM_NPC,
+            NPC,
             CustomEntityNPC.createMobAttributes()
                 .add(EntityAttributes.GENERIC_MAX_HEALTH, 20.0)
                 .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.3)
